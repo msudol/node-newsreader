@@ -18,3 +18,28 @@ Running the app will present a CLI that prompts for user input. The following co
 * quit: close this program
 
 ![Alt text](/newsreader.jpg?raw=true "Node Newsreader Screenshot")
+
+## Configuration
+
+Edit the config/config.js and replace set config.feed.url to the RSS feed of your choosing.
+
+## Libraries
+node-newsreader makes use of a library to parse RSS feeds from XML to JSON and several other libraries to enhance the UI.
+
+### rss-parser
+
+https://www.npmjs.com/package/rss-parser
+
+A small library for turning RSS XML feeds into JavaScript objects.
+
+### node-color-readline
+
+https://www.npmjs.com/package/node-color-readline
+
+Node.js 'readline' alternative with support for coloured syntax highlighting and suggestions.
+
+### chalk
+
+https://www.npmjs.com/package/chalk
+
+Terminal string styling done right
