@@ -1,0 +1,14 @@
+{
+  "name": "node-newsreader",
+  "version": "0.0.1",
+  "description": "As a school assignment, developer a newsreader utility that can read RSS feeds and display in a readable format on screen.",
+  "main": "app.js",
+  "repository": "https://github.com/msudol/node-newsreader.git",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt Sudol"
+}
