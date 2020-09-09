@@ -21,7 +21,7 @@ Running the app will present a CLI that prompts for user input. The following co
 
 ## Configuration
 
-Edit the config/config.js and replace set config.feed.url to the RSS feed of your choosing.
+Edit the config/config.js and replace set config.url to the RSS feed of your choosing.
 
 ## Libraries
 node-newsreader makes use of a library to parse RSS feeds from XML to JSON and several other libraries to enhance the UI.
