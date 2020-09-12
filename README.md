@@ -9,7 +9,7 @@ Installation requires Node.js to be installed as a pre-requisite. Visit https://
 3. NPM the Node Package Manager will setup node-newsreader and any depenendcies
 4. Run command > node app
 
-Running the app will present a CLI that prompts for user input. The following commands are available:
+On launch the app will pull the feed configued in config.js and will present a CLI and menu for user input. The following commands are available:
 
 * pull: get the latest RSS newsfeed (runs on app start)
 * titles: show index of news titles
@@ -21,7 +21,7 @@ Running the app will present a CLI that prompts for user input. The following co
 
 ## Configuration
 
-Edit the config/config.js and replace set config.url to the RSS feed of your choosing.
+Edit the config/config.js and set config.url to the RSS feed of your choosing.
 
 ## Libraries
 node-newsreader makes use of a library to parse RSS feeds from XML to JSON and several other libraries to enhance the UI.
@@ -43,3 +43,9 @@ Node.js 'readline' alternative with support for coloured syntax highlighting and
 https://www.npmjs.com/package/chalk
 
 Terminal string styling done right
+
+### open
+
+https://www.npmjs.com/package/open
+
+Open stuff like URLs, files, executables. For URLs in this case, open attempts to fetch the system brower (cross-platform).

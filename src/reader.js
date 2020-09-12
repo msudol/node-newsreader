@@ -18,35 +18,34 @@ let parser = new Parser({
 
 // create reader class
 function reader(url) {
-    
+
     this.url = url;
     this.feed = {};
 
 };
 
+// pull command can be run from the CLI and also runs on app start
 reader.prototype.pull = function(callback) {
 
     var self = this;
     
+    // method to fetch and parse the RSS feed
     parser.parseURL(this.url, function(err, feed) {
-        
         if (err) throw err;
-        
+
         // going to add the current timestap to the feed object fnar
         let d = new Date();
         let diso = d.toISOString();
-        feed.date = diso;
-        
+        feed.date = diso;  
         self.feed = feed;
-        
         let res = "> RSS Feed Pulled";
-    
+
         callback(res);
-        
     });
     
 };
 
+// menu command to list each rss article pulled with an index for retrieval with the read/open commands
 reader.prototype.titles = function(callback) {
 
     let res = "";
@@ -59,13 +58,10 @@ reader.prototype.titles = function(callback) {
     }
     else {
         let i = 0;
-        // should just return the feed items 
-        
-        
-        // cycle through the feed object and print out the titles
+        // cycle through the feed object and print out the titles, with link and published date
         this.feed.items.forEach(item => {
             i++;
-            res += chalk.yellow("[" + i + "] ") + item.title + ": " + chalk.cyan(item.link) + "\n";
+            res += chalk.yellow("[" + i + "] ") + item.title + ": " + chalk.cyan(item.link) + " (" + item.pubDate + ")\n";
             
         });
     }
@@ -73,6 +69,7 @@ reader.prototype.titles = function(callback) {
     callback(res);
 };
 
+// read an article's details: Title, pubdate, and summary
 reader.prototype.read = function(args, callback) {
 
     let res = "";
@@ -98,10 +95,14 @@ reader.prototype.read = function(args, callback) {
                 argcheck = false;
             }
         }
-
+        
+        // get the current item selected from the feed object
+        let curItem = this.feed.items[index - 1];
         if (argcheck) {
-            res += chalk.red.bold(this.feed.items[index - 1].title) + "\n";
-            res += chalk.white.inverse(this.feed.items[index - 1].contentSnippet);
+            res += chalk.red.bold(curItem.title) + "\n";
+            res += chalk.white.bold(curItem.pubDate) + "\n";
+            res += chalk.white.inverse(curItem.contentSnippet) + "\n";
+            res += chalk.cyan(curItem.link) + "\n";
         }
         else {
             res = "> Unknown news index, try read [int].  Check 'titles' for available indices.";
@@ -113,6 +114,7 @@ reader.prototype.read = function(args, callback) {
     
 };
 
+// open an article in the browser
 reader.prototype.open = function(args, callback) {
 
     let res = "";
@@ -158,4 +160,5 @@ reader.prototype.open = function(args, callback) {
     callback(res);
     
 };
+
 module.exports = reader;
